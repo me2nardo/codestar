@@ -1,0 +1,17 @@
+discovery:
+ container_name: codestar-discovery
+ image: me2nardo/codestar-discovery
+ ports:
+  - "8761:8761"
+ liks:
+  - config
+
+config:
+ container_name: codestar-config
+ image: me2nardo/codestar-config
+ ports:
+  - "8888:8888"
+
+rabbit:
+  container_name: codestar-rabbitmq
+  image: rabbitmq:lastest

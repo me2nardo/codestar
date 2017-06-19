@@ -10,6 +10,7 @@
         <module>config</module>
 		<module>discovery</module>
         <module>github-crawler</module>
+        <module>github-crawler-web</module>
     </modules>
     <packaging>pom</packaging>
 

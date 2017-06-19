@@ -9,18 +9,14 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>config</artifactId>
+    <artifactId>github-crawler-web</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-zuul</artifactId>
+        </dependency>
 
-   <dependencies>
-       <dependency>
-           <groupId>org.springframework.cloud</groupId>
-           <artifactId>spring-cloud-starter-config</artifactId>
-       </dependency>
-       <dependency>
-           <groupId>org.springframework.cloud</groupId>
-           <artifactId>spring-cloud-config-server</artifactId>
-       </dependency>
-   </dependencies>
+    </dependencies>
     <build>
         <plugins>
             <plugin>
@@ -40,7 +36,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <imageName>me2nardo/codestar-config</imageName>
+                    <imageName>me2nardo/codestar-crawler-web</imageName>
                     <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
                     <resources>
                         <resource>
@@ -53,5 +49,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
