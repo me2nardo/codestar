@@ -6,6 +6,22 @@ discovery:
  liks:
   - config
 
+graphdb:
+  container_name: codestar-graphdb
+  image: neo4j:latest
+  environment:
+   - NEO4J_AUTH=neo4j/alco
+  ports:
+   - "7474:7474"
+   - "7687:7687"
+  volume:
+   - ./data:/data
+  ulimits:
+      nofile:
+        soft: 65535
+        hard: 65535
+  restart: always
+
 config:
  container_name: codestar-config
  image: me2nardo/codestar-config
@@ -15,3 +31,28 @@ config:
 rabbit:
   container_name: codestar-rabbitmq
   image: rabbitmq:lastest
+
+github-crawler:
+  container_name: codestar-crawler
+  image: me2nardo/codestar-crawler
+  ports:
+   - "9005:9005"
+  links:
+   - config
+   - discovery
+   - rabbit
+   - graphdb
+
+github-crawler-web:
+  container_name: codestar-crawler-web
+  image: me2nardo/codestar-crawler-web
+  ports:
+   - "8005:8005"
+  links:
+   - config
+   - discovery
+
+networks:
+  default:
+    # Use a custom driver
+    driver: custom-driver-1
