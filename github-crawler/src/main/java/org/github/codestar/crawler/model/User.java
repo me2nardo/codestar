@@ -25,20 +25,19 @@ public class User implements Serializable{
     private Long profileId;
 
     @Relationship(type = "FOLLOWS", direction = "OUTGOING")
-    private Set<User> follows = new HashSet<>();
+    private Set<User> follow = new HashSet<>();
 
     @Relationship(type = "FOLLOWS", direction = "INCOMING")
-    private Set<User> followers = new HashSet<>();
+    private Set<User> follower = new HashSet<>();
 
-    private String screenName;
-    private String name;
+    private String login;
+    private String avatarUrl;
+    private String gravatarId;
     private String url;
-    private String profileImageUrl;
-    private String description;
-    private String location;
-    private Date createdDate;
-    private Integer followerCount;
-    private Integer followsCount;
+    private String company;
+    private int followers;
+    private int following;
+    private Date createdAt;
     private Float pagerank;
     private Integer previousRank;
     private Integer currentRank;
@@ -63,36 +62,44 @@ public class User implements Serializable{
         this.profileId = profileId;
     }
 
-    public Set<User> getFollows() {
-        return follows;
+    public Set<User> getFollow() {
+        return follow;
     }
 
-    public void setFollows(Set<User> follows) {
-        this.follows = follows;
+    public void setFollow(Set<User> follow) {
+        this.follow = follow;
     }
 
-    public Set<User> getFollowers() {
-        return followers;
+    public Set<User> getFollower() {
+        return follower;
     }
 
-    public void setFollowers(Set<User> followers) {
-        this.followers = followers;
+    public void setFollower(Set<User> follower) {
+        this.follower = follower;
     }
 
-    public String getScreenName() {
-        return screenName;
+    public String getLogin() {
+        return login;
     }
 
-    public void setScreenName(String screenName) {
-        this.screenName = screenName;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
-    public String getName() {
-        return name;
+    public String getAvatarUrl() {
+        return avatarUrl;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
+    }
+
+    public String getGravatarId() {
+        return gravatarId;
+    }
+
+    public void setGravatarId(String gravatarId) {
+        this.gravatarId = gravatarId;
     }
 
     public String getUrl() {
@@ -103,52 +110,36 @@ public class User implements Serializable{
         this.url = url;
     }
 
-    public String getProfileImageUrl() {
-        return profileImageUrl;
+    public String getCompany() {
+        return company;
     }
 
-    public void setProfileImageUrl(String profileImageUrl) {
-        this.profileImageUrl = profileImageUrl;
+    public void setCompany(String company) {
+        this.company = company;
     }
 
-    public String getDescription() {
-        return description;
+    public int getFollowers() {
+        return followers;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setFollowers(int followers) {
+        this.followers = followers;
     }
 
-    public String getLocation() {
-        return location;
+    public int getFollowing() {
+        return following;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setFollowing(int following) {
+        this.following = following;
     }
 
-    public Date getCreatedDate() {
-        return createdDate;
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public Integer getFollowerCount() {
-        return followerCount;
-    }
-
-    public void setFollowerCount(Integer followerCount) {
-        this.followerCount = followerCount;
-    }
-
-    public Integer getFollowsCount() {
-        return followsCount;
-    }
-
-    public void setFollowsCount(Integer followsCount) {
-        this.followsCount = followsCount;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
     public Float getPagerank() {
@@ -205,31 +196,5 @@ public class User implements Serializable{
 
     public void setDiscoveredRank(Integer discoveredRank) {
         this.discoveredRank = discoveredRank;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", profileId=" + profileId +
-                ", follows=" + follows +
-                ", followers=" + followers +
-                ", screenName='" + screenName + '\'' +
-                ", name='" + name + '\'' +
-                ", url='" + url + '\'' +
-                ", profileImageUrl='" + profileImageUrl + '\'' +
-                ", description='" + description + '\'' +
-                ", location='" + location + '\'' +
-                ", createdDate=" + createdDate +
-                ", followerCount=" + followerCount +
-                ", followsCount=" + followsCount +
-                ", pagerank=" + pagerank +
-                ", previousRank=" + previousRank +
-                ", currentRank=" + currentRank +
-                ", lastPageRank=" + lastPageRank +
-                ", imported=" + imported +
-                ", discoveredTime=" + discoveredTime +
-                ", discoveredRank=" + discoveredRank +
-                '}';
     }
 }
