@@ -10,11 +10,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class GitHubServiceImpl implements GitHubService {
 
+    //TODO:: Implement discover By Name
     @Override
     public User discoverByUserName(String username) {
         return null;
     }
 
+    //TODO:: Implement discover By Id
     @Override
     public User discoverById(long id) {
         return null;
