@@ -30,6 +30,8 @@ public class User implements Serializable{
     @Relationship(type = "FOLLOWS", direction = "INCOMING")
     private Set<User> follower = new HashSet<>();
 
+    public User(){}
+
     private String login;
     private String avatarUrl;
     private String gravatarId;
@@ -196,5 +198,30 @@ public class User implements Serializable{
 
     public void setDiscoveredRank(Integer discoveredRank) {
         this.discoveredRank = discoveredRank;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", profileId=" + profileId +
+                ", follow=" + follow +
+                ", follower=" + follower +
+                ", login='" + login + '\'' +
+                ", avatarUrl='" + avatarUrl + '\'' +
+                ", gravatarId='" + gravatarId + '\'' +
+                ", url='" + url + '\'' +
+                ", company='" + company + '\'' +
+                ", followers=" + followers +
+                ", following=" + following +
+                ", createdAt=" + createdAt +
+                ", pagerank=" + pagerank +
+                ", previousRank=" + previousRank +
+                ", currentRank=" + currentRank +
+                ", lastPageRank=" + lastPageRank +
+                ", imported=" + imported +
+                ", discoveredTime=" + discoveredTime +
+                ", discoveredRank=" + discoveredRank +
+                '}';
     }
 }
