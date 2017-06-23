@@ -16,17 +16,15 @@ import java.util.Optional;
 @Service
 public class GitHubServiceImpl implements GitHubService {
 
-    private final String QUEUE_NAME = "q:followers";
+    private final String QUEUE_NAME = "q:extract";
 
     private final GitHubApi gitHubApi;
     private final UserRepository userRepository;
-    private final FollowsRepository followsRepository;
     private final RabbitTemplate rabbitTemplate;
 
-    public GitHubServiceImpl(GitHubApi gitHubApi, UserRepository userRepository, FollowsRepository followsRepository, RabbitTemplate rabbitTemplate) {
+    public GitHubServiceImpl(GitHubApi gitHubApi, UserRepository userRepository, RabbitTemplate rabbitTemplate) {
         this.gitHubApi = gitHubApi;
         this.userRepository = userRepository;
-        this.followsRepository = followsRepository;
         this.rabbitTemplate = rabbitTemplate;
     }
 
@@ -38,10 +36,10 @@ public class GitHubServiceImpl implements GitHubService {
         user.setCurrentRank(0);
         user.setLastPageRank(0F);
 
-        userRepository.save(user);
+        user = userRepository.save(user);
 
         if (user.getFollowers() > 0 && user.getFollowing() > 0) {
-            rabbitTemplate.convertAndSend(QUEUE_NAME,username);
+            rabbitTemplate.convertAndSend(QUEUE_NAME,user);
         }
 
         return user;

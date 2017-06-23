@@ -25,6 +25,10 @@ public class GitHubApiImpl implements GitHubApi {
     private final String PARAM = API +"/{PARAM}";
     private final RestTemplate restTemplate = new RestTemplate();
 
+
+    // TODO: add limit counter https://api.github.com/rate_limit check avery 30 sec
+    // TODO: add header with token and user-agent
+
     @Override
     public User extractUser(String username) {
         Map<String,String> params = new HashMap<>();
