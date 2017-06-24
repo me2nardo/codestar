@@ -23,8 +23,12 @@ public class GitHubApiImpl implements GitHubApi {
 
     private final String API = "https://api.github.com/users/{username}";
     private final String PARAM = API +"/{PARAM}";
-    private final RestTemplate restTemplate = new RestTemplate();
+    private final RestTemplate restTemplate;
 
+    public GitHubApiImpl(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+        
+    }
 
     // TODO: add limit counter https://api.github.com/rate_limit check avery 30 sec
     // TODO: add header with token and user-agent
