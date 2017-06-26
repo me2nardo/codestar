@@ -1,5 +1,6 @@
 package org.github.codestar.crawler.service.impl;
 
+import org.github.codestar.crawler.model.RateLimit;
 import org.github.codestar.crawler.model.User;
 import org.github.codestar.crawler.service.GitHubApi;
 import org.slf4j.Logger;
@@ -25,13 +26,16 @@ public class GitHubApiImpl implements GitHubApi {
     private final String PARAM = API +"/{PARAM}";
     private final RestTemplate restTemplate;
 
+
     public GitHubApiImpl(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
-        
     }
-
+/*
+    private RateLimit initRateLimit(){
+        return restTemplate.getForEntity(API,RateLimit.class).getBody();
+    }
+*/
     // TODO: add limit counter https://api.github.com/rate_limit check avery 30 sec
-    // TODO: add header with token and user-agent
 
     @Override
     public User extractUser(String username) {
