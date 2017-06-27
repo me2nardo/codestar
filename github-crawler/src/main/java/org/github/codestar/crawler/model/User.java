@@ -32,6 +32,12 @@ public class User implements Serializable{
 
     public User(){}
 
+    public User(Long id, String login, String avatarUrl) {
+        this.id = id;
+        this.login = login;
+        this.avatarUrl = avatarUrl;
+    }
+
     private String login;
     private String avatarUrl;
     private String gravatarId;

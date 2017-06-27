@@ -1,6 +1,5 @@
 package org.github.codestar.crawler.service.impl;
 
-import org.github.codestar.crawler.model.RateLimit;
 import org.github.codestar.crawler.model.User;
 import org.github.codestar.crawler.service.GitHubApi;
 import org.slf4j.Logger;
