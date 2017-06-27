@@ -10,15 +10,17 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.client.MockRestServiceServer;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import static org.junit.Assert.assertNotNull;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.method;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
-import static org.springframework.test.web.client.response.MockRestResponseCreators.withBadRequest;
+import static org.springframework.test.web.client.response.MockRestResponseCreators.withStatus;
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
 
 
@@ -55,11 +57,11 @@ public class GitHubApiTest {
         assertNotNull(user);
     }
 
-    @Test
+    @Test(expected = HttpClientErrorException.class)
     public void testNotFound() throws Exception{
-       /*
+
         mockRest.expect(requestTo("https://api.github.com/users/someuser")).andExpect(method(HttpMethod.GET))
-                .andRespond();
-*/
+                .andRespond(withStatus(HttpStatus.NOT_FOUND));
+        User user = gitHubApi.extractUser("someuser");
     }
 }
