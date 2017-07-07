@@ -11,8 +11,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class RateLimit {
     private int limit;
-    private AtomicInteger remaining;
-    private Date reset;
+    private int remaining;
+    private long reset;
 
     public int getLimit() {
         return limit;
@@ -22,19 +22,19 @@ public class RateLimit {
         this.limit = limit;
     }
 
-    public AtomicInteger getRemaining() {
+    public int getRemaining() {
         return remaining;
     }
 
-    public void setRemaining(AtomicInteger remaining) {
+    public void setRemaining(int remaining) {
         this.remaining = remaining;
     }
 
-    public Date getReset() {
+    public long getReset() {
         return reset;
     }
 
-    public void setReset(Date reset) {
+    public void setReset(long reset) {
         this.reset = reset;
     }
 }
